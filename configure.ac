@@ -37,5 +37,4 @@ else
   AC_DEFINE([__SYMBOL_PREFIX], [""], [C symbol prefix])
 fi
 
-AC_CONFIG_FILES([Makefile])
-AC_OUTPUT
+AC_OUTPUT([Makefile])
