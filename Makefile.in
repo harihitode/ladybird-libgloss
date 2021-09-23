@@ -1,0 +1,37 @@
+# Compiler Toolchain
+
+CC	:= @CC@
+CFLAGS	:= @CFLAGS@
+
+AR	:= @AR@
+RANLIB	:= @RANLIB@
+
+gloss_srcs = \
+	close.c \
+	exit.c \
+	fstat.c \
+	getpid.c \
+	isatty.c \
+	kill.c \
+	lseek.c \
+	read.c \
+	sbrk.c \
+	write.c \
+	crt0.S
+
+gloss_c_srcs = $(filter %.c, $(gloss_srcs))
+gloss_c_objs = $(patsubst %.c, %.o, $(notdir $(gloss_c_srcs)))
+gloss_asm_srcs = $(filter %.S, $(gloss_srcs))
+gloss_asm_objs = $(patsubst %.S, %.o, $(notdir $(gloss_asm_srcs)))
+gloss_objs = $(gloss_c_srcs) + $(gloss_asm_srcs)
+
+libgloss.a: $(gloss_objs)
+	$(AR) rcv $@ $^
+	$(RANLIB) $@
+
+all: libgloss.a
+
+
+
+
+
