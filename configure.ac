@@ -5,6 +5,9 @@ AC_PREREQ([2.69])
 AC_INIT(libladybird-gloss.a, 0.0.0)
 AC_CONFIG_HEADERS([config.h])
 
+AM_INIT_AUTOMAKE([foreign])
+
+AC_PROG_CC
 AC_ARG_PROGRAM
 AC_PROG_INSTALL
 
@@ -33,3 +36,6 @@ if test $libc_cv_symbol_prefix != none; then
 else
   AC_DEFINE([__SYMBOL_PREFIX], [""], [C symbol prefix])
 fi
+
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
