@@ -1,10 +1,14 @@
-# Compiler Toolchain
-
 CC	:= @CC@
-CFLAGS	:= @CFLAGS@
 
 AR	:= @AR@
 RANLIB	:= @RANLIB@
+
+VPATH	:= @srcdir@
+INSTALL_DATA	:= @INSTALL_DATA@
+
+exec_prefix = @exec_prefix@
+target_alias = @target_alias@
+tooldir = $(exec_prefix)/$(target_alias)
 
 gloss_srcs = \
 	close.c \
@@ -23,7 +27,7 @@ gloss_c_srcs = $(filter %.c, $(gloss_srcs))
 gloss_c_objs = $(patsubst %.c, %.o, $(notdir $(gloss_c_srcs)))
 gloss_asm_srcs = $(filter %.S, $(gloss_srcs))
 gloss_asm_objs = $(patsubst %.S, %.o, $(notdir $(gloss_asm_srcs)))
-gloss_objs = $(gloss_c_srcs) + $(gloss_asm_srcs)
+gloss_objs = $(gloss_c_objs) $(gloss_asm_objs)
 
 libgloss.a: $(gloss_objs)
 	$(AR) rcv $@ $^
@@ -31,7 +35,10 @@ libgloss.a: $(gloss_objs)
 
 all: libgloss.a
 
-
+.PHONY: install
+install:
+	mkdir -p $(tooldir)/lib; \
+	$(INSTALL_DATA) libgloss.a $(tooldir)/lib
 
 
 

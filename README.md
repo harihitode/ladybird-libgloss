@@ -45,7 +45,7 @@ index 63c1f1c8b..1cbfdf045 100755
 
 ```
 diff --git a/libgloss/configure b/libgloss/configure
-index 816b9c4b8..10cd1bb62 100755
+index 816b9c4b8..a03b11ea0 100755
 --- a/libgloss/configure
 +++ b/libgloss/configure
 @@ -681,6 +681,7 @@ sparc
@@ -56,7 +56,7 @@ index 816b9c4b8..10cd1bb62 100755
  rs6000
  mn10200
  mn10300
-@@ -2463,6 +2464,10 @@ case "${target}" in
+@@ -2463,6 +2464,11 @@ case "${target}" in
    mips*-*-*)
         subdirs="$subdirs mips"
 
@@ -64,6 +64,7 @@ index 816b9c4b8..10cd1bb62 100755
 +  riscv*-ladybird-*)
 +       subdirs="$subdirs ladybird-libgloss"
 +
++       config_libnosys=false
         ;;
    riscv*-*-*)
         subdirs="$subdirs riscv"

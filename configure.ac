@@ -5,10 +5,11 @@ AC_PREREQ([2.69])
 AC_INIT(libladybird-gloss.a, 0.0.0)
 AC_CONFIG_HEADERS([config.h])
 
-AM_INIT_AUTOMAKE([foreign])
-
-AC_PROG_CC
 AC_ARG_PROGRAM
+
+LIB_AC_PROG_CC
+AC_CHECK_TOOL([AR],[ar])
+AC_CHECK_TOOL([RANLIB],[ranlib])
 AC_PROG_INSTALL
 
 AC_DEFINE([HAVE_ELF], [1], [Using ELF format])
@@ -37,4 +38,5 @@ else
   AC_DEFINE([__SYMBOL_PREFIX], [""], [C symbol prefix])
 fi
 
-AC_OUTPUT([Makefile])
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
