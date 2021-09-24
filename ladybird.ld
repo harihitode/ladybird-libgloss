@@ -1,4 +1,5 @@
 ENTRY(_zerokara_hajimeru)
+STARTUP(libgloss.a)
 
 MEMORY {
 	bram (rw)  : ORIGIN = 0x80000000, LENGTH = 8k
