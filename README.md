@@ -77,7 +77,7 @@ index 816b9c4b8..a03b11ea0 100755
 
 ```
 mkdir build; cd build
-../configure --target=riscv32-harihitode-ladybird-elf CC_FOR_TARGET="${HOME}/llvm-riscv/bin/clang --target=riscv32-unknown-elf -march=rv32i -fPIC" AR_FOR_TARGET="${HOME}/llvm-riscv/bin/llvm-ar" RANLIB_FOR_TARGET="${HOME}/llvm-riscv/bin/llvm-ar -s" --disable-multilib CFLAGS_FOR_TARGET="--target=riscv32-unknown-elf -march=rv32i -fPIC" --prefix=${HOME}/ladybird_newlib
+../configure --target=riscv32-harihitode-ladybird-elf CC_FOR_TARGET="${HOME}/llvm-riscv/bin/clang" AR_FOR_TARGET="${HOME}/llvm-riscv/bin/llvm-ar" RANLIB_FOR_TARGET="${HOME}/llvm-riscv/bin/llvm-ar -s" --disable-multilib CFLAGS_FOR_TARGET="--target=riscv32-unknown-elf -march=rv32i -mabi=ilp32 -O3 -fPIC" --prefix=${HOME}/ladybird_newlib
 make -jN
 ```
 
