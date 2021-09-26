@@ -1,5 +1,4 @@
 #include <errno.h>
-#include <unistd.h>
 
 extern char _end; // end of the BSS
 char * heap_ptr = NULL;
