@@ -1,4 +1,5 @@
 CC	:= @CC@
+ASFLAGS := $(CFLAGS)
 
 AR	:= @AR@
 RANLIB	:= @RANLIB@
@@ -22,12 +23,12 @@ gloss_srcs = \
 	sbrk.c \
 	write.c \
 	ladybird_runtime.c \
-	crt0.S
+	crt0.s
 
 gloss_c_srcs = $(filter %.c, $(gloss_srcs))
 gloss_c_objs = $(patsubst %.c, %.o, $(notdir $(gloss_c_srcs)))
-gloss_asm_srcs = $(filter %.S, $(gloss_srcs))
-gloss_asm_objs = $(patsubst %.S, %.o, $(notdir $(gloss_asm_srcs)))
+gloss_asm_srcs = $(filter %.s, $(gloss_srcs))
+gloss_asm_objs = $(patsubst %.s, %.o, $(notdir $(gloss_asm_srcs)))
 gloss_objs = $(gloss_c_objs) $(gloss_asm_objs)
 
 libgloss.a: $(gloss_objs)

@@ -588,6 +588,8 @@ INSTALL_SCRIPT
 INSTALL_PROGRAM
 RANLIB
 AR
+CCASFLAGS
+CCAS
 am__fastdepCC_FALSE
 am__fastdepCC_TRUE
 CCDEPMODE
@@ -646,7 +648,9 @@ enable_dependency_tracking
 '
       ac_precious_vars='build_alias
 host_alias
-target_alias'
+target_alias
+CCAS
+CCASFLAGS'
 
 
 # Initialize some variables set by options.
@@ -1277,6 +1281,13 @@ Optional Features:
                           do not reject slow dependency extractors
   --disable-dependency-tracking
                           speeds up one-time build
+
+Some influential environment variables:
+  CCAS        assembler compiler command (defaults to CC)
+  CCASFLAGS   assembler compiler flags (defaults to CFLAGS)
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
 
 Report bugs to the package provider.
 _ACEOF
@@ -2175,6 +2186,13 @@ else
   test "${CFLAGS+set}" = set || CFLAGS="-g"
 fi
 
+# By default we simply use the C compiler to build assembly code.
+
+test "${CCAS+set}" = set || CCAS=$CC
+test "${CCASFLAGS+set}" = set || CCASFLAGS=$CFLAGS
+
+
+
 if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}ar", so it can be a program name with args.
 set dummy ${ac_tool_prefix}ar; ac_word=$2
@@ -2358,6 +2376,7 @@ esac
 else
   RANLIB="$ac_cv_prog_RANLIB"
 fi
+
 
 ac_aux_dir=
 for ac_dir in "$srcdir" "$srcdir/.." "$srcdir/../.."; do
