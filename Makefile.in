@@ -23,6 +23,7 @@ gloss_srcs = \
 	sbrk.c \
 	write.c \
 	ladybird_runtime.c \
+	interrupt_handler.s \
 	crt0.s
 
 gloss_c_srcs = $(filter %.c, $(gloss_srcs))
